@@ -39,7 +39,20 @@ const tweet = document.createElement('li')
 
 //console.log(tweetsList,content, likes, author)
 
+tweetsList.classList.add('tweet')
+tweet.classList.add('tweet')
+content.classList.add('content')
+likes.classList.add('likes')
+author.classList.add('author')
 
+content.textContent = tweets[0].content
+likes.textContent = tweets[0].likes
+author.textContent = tweets[0].author
+
+tweetsList.prepend(tweet)
+tweet.prepend(content)
+tweet.prepend(likes)
+tweet.append(author)
 
 tweets.forEach(tweetData => {
   const tweet = document.createElement('li');
@@ -56,6 +69,10 @@ tweets.forEach(tweetData => {
   const author = document.createElement('p');
   author.classList.add('author');
   author.textContent = tweetData.author;
+
+  if (tweetData.likes > 10) {
+    tweet.classList.add('favorite');
+  }
 
   tweet.appendChild(content);
   tweet.appendChild(likes);
