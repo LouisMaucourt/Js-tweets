@@ -39,19 +39,27 @@ const tweet = document.createElement('li')
 
 //console.log(tweetsList,content, likes, author)
 
-tweetsList.classList.add('tweet')
-tweet.classList.add('tweet')
-content.classList.add('content')
-likes.classList.add('likes')
-author.classList.add('author')
-
-content.textContent = tweets[0].content
-likes.textContent = tweets[0].likes
-author.textContent = tweets[0].author
-
-tweetsList.prepend(tweet)
-tweet.prepend(content)
-tweet.prepend(likes)
-tweet.append(author)
 
 
+tweets.forEach(tweetData => {
+  const tweet = document.createElement('li');
+  tweet.classList.add('tweet');
+
+  const content = document.createElement('p');
+  content.classList.add('content');
+  content.textContent = tweetData.content;
+
+  const likes = document.createElement('p');
+  likes.classList.add('likes');
+  likes.textContent = tweetData.likes;
+
+  const author = document.createElement('p');
+  author.classList.add('author');
+  author.textContent = tweetData.author;
+
+  tweet.appendChild(content);
+  tweet.appendChild(likes);
+  tweet.appendChild(author);
+
+  tweetsList.appendChild(tweet);
+});
